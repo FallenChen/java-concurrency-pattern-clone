@@ -170,7 +170,6 @@ public class UsingExecutors {
             e.printStackTrace();
         }
         try {
-
             workStealingPool.awaitTermination(6, TimeUnit.SECONDS);
             workStealingPool.shutdown();
         }catch (InterruptedException e){
@@ -181,11 +180,11 @@ public class UsingExecutors {
 
     public static void main(String[] args) {
 //        usingSingleThreadExecutor();
-        usingCachedThreadPool();
+//        usingCachedThreadPool();
 //        usingFixedThreadPool();
 //        usingScheduledThreadPool();
 //        usingSingleThreadScheduledExecutor();
-//        usingWorkStealingThreadPool();
+        usingWorkStealingThreadPool();
     }
 
 }
