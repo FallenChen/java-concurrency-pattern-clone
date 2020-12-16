@@ -24,6 +24,20 @@
 
 有一组与并发相关的术语是以 "multiple"字开头的收缩词:multi-tasking, multi-programming, multi-processing, multi-threading 和 multi-core。multi-threading一般指的是使用系统线程，multi-core指的是硬件的并发，但其它术语都是模糊的，可以指一般的并发，也可以指更具体的东西，比如使用系统进程(system processes)或避免繁忙等待(avoiding busy-waiting)，所以最好避免使用模糊的术语。
 
+# Parallel vs serial
+
+并行是指同时执行多个计算，而串行是一次执行一个计算(one-at-a-time)。并行化和串行化是指并行或串行组成计算。
+
+## Overlapping vs interleaved lifetimes (true parallelism vs pseudo-parallelism)
+
+并行计算有重叠(overlap)的生命期，真正的并行意味着重叠在物理上是即时的或同时的，而伪并行则意味着重叠只是概念上的。真正的并行计算需要硬件支持（多核处理器），而伪并行意味着并行计算是对串行交错的子计算(interleaved sub-computations)的抽象。真正的并行本质上是一个实现细节，而伪并行可以是计算模型的一部分。
+
+“并发”和“并行”的通俗含义在很大程度上是同义词，这是一个重大的混淆来源，甚至延伸到计算机科学文献中，在这些文献中，并发可能会被误导性地用暗示或明示用重叠的生命周期术语来描述。并发和并行之间关系的关键在于顺序无关(并发)计算可以在不改变结果正确性的情况下并行化，但并发并不意味着并行，反之亦然。例如，计算可以并行而不独立，如SIMD，按顺序执行并行计算。
+
+# Compute-bound vs i/o-bound
+
+计算约束或i/o约束指的是计算（例如数值计算）或通信（主要是等待接收输入或发送输出）在时间上的界限。广义上讲，真正的并行与在计算密集型用例中提高吞吐量更为相关，而伪并行对于提高i/o密集型用例提高吞吐量，减少延迟是足够的。
+
 
 
 
